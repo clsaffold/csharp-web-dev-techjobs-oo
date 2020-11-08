@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace TechJobsOO
+namespace TechJobsOONS
 {
     class Program
     {

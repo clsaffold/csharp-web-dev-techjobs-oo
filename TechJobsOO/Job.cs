@@ -20,9 +20,8 @@ namespace TechJobsOONS
             nextId++;
         }
 
-        public Job(string value, string name, Employer employerName, Location employerLocation, PositionType jobType, CoreCompetency jobCoreCompetency) : this()
+        public Job(string name, Employer employerName, Location employerLocation, PositionType jobType, CoreCompetency jobCoreCompetency) : this()
         {
-            Value = value;
             Name = name;
             EmployerName = employerName;
             EmployerLocation = employerLocation;

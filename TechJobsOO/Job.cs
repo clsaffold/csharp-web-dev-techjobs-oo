@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Security.Cryptography.X509Certificates;
+
 namespace TechJobsOONS
 {
     public class Job
@@ -12,6 +14,8 @@ namespace TechJobsOONS
         public Location EmployerLocation { get; set; }
         public PositionType JobType { get; set; }
         public CoreCompetency JobCoreCompetency { get; set; }
+
+        //String x = "Data Not Available.";
 
         // TODO: Add the two necessary constructors.
         public Job()
@@ -29,8 +33,6 @@ namespace TechJobsOONS
             JobCoreCompetency = jobCoreCompetency;
         }    
        
-    
-
     // TODO: Generate Equals() and GetHashCode() methods.
 
         public override bool Equals(object obj)
@@ -46,7 +48,13 @@ namespace TechJobsOONS
 
         public override string ToString()
         {
-            return Name;
+
+            string s = "\n" + "Id: " + Id + "\nName: " + Name.ToString() + "\nEmployer: " + EmployerName.ToString() + "\nLocation: " + EmployerLocation.ToString() + "\nPosition Type: " + JobType.ToString() + "\nCore Competency: " + JobCoreCompetency.ToString() + "\n";
+            s = s.Replace(": \n", ": Data Not Available.\n");
+            
+            return s;
+
         }
+        
     }
 }

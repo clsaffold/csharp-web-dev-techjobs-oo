@@ -16,33 +16,43 @@ namespace TechJobsTests
         }
 
         [TestMethod]
+        public void TestJobConstructorSetsAllFields()
+        {
+            Job job1 = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
+
+            Assert.AreEqual("Product tester", job1.Name);
+            Assert.AreEqual("ACME", job1.EmployerName.ToString());
+            Assert.AreEqual("Desert", job1.EmployerLocation.ToString());
+            Assert.AreEqual("Quality control", job1.JobType.ToString());
+            Assert.AreEqual("Persistence", job1.JobCoreCompetency.ToString());
+        }
+
+        [TestMethod]
         public void TestJobsForEquality()
         {
             
-           Job job1 = new Job("CEO", new Employer("ABC Corp"), new Location("Fajardo, PR"), new PositionType("Executive"), new CoreCompetency("Leadership"));
-           Job job2 = new Job("CEO", new Employer("ABC Corp"), new Location("Fajardo, PR"), new PositionType("Executive"), new CoreCompetency("Leadership"));
-            
-            Boolean Equals(object toBeCompared)
+            Job job1 = new Job("CEO", new Employer("ABC Corp"), new Location("Fajardo, PR"), new PositionType("Executive"), new CoreCompetency("Leadership"));
+            Job job2 = new Job("CEO", new Employer("ABC Corp"), new Location("Fajardo, PR"), new PositionType("Executive"), new CoreCompetency("Leadership"));
+            Equals(job1, job2);
+
+        }
+
+        [TestMethod]
+        public void TestToString()
+        {
+            Job job1 = new Job("CEO", new Employer("ABC Corp"), new Location("Fajardo, PR"), new PositionType("Executive"), new CoreCompetency("Leadership"));
+            Job job2 = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
+            Assert.AreEqual(job1.ToString(), job1.ToString());
+        }
+
+        [TestMethod]
+        public void TestAccurateFields()
+        {
             {
-                if (toBeCompared == this)
-                {
-                    return true;
-                }
+                Job job1 = new Job("CEO", new Employer("ABC Corp"), new Location("Fajardo, PR"), new PositionType("Executive"), new CoreCompetency("Leadership"));
+                Assert.AreEqual(job1.ToString(), ("\n" + "Id: " + job1.Id + "\nName: " + job1.Name.ToString() + "\nEmployer: " + job1.EmployerName.ToString() + "\nLocation: " + job1.EmployerLocation.ToString() + "\nPosition Type: " + job1.JobType.ToString() + "\nCore Competency: " + job1.JobCoreCompetency.ToString() + "\n"));
 
-                if (toBeCompared == null)
-                {
-                    return false;
-                }
-                
-                if (toBeCompared.GetType()  != this.GetType())
-                {
-                    return false;
-                }
-
-                Job job1 = toBeCompared;
-                return job1 == job2
             }
-
         }
     }
 }
